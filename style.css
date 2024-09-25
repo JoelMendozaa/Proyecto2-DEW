@@ -1,0 +1,13 @@
+.images {
+    display: flex; /* Me permite tener las imagen una al lado de otra */
+    justify-content: center;
+    align-items: center;
+}
+
+.images-img {
+    width: 200px;
+    object-fit: contain;    /* mantiene la proporción original de la imagen */
+    height: auto;
+    margin-top: 10px;
+    margin-right: 30px;
+}
