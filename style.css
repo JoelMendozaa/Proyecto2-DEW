@@ -11,3 +11,14 @@
     margin-top: 10px;
     margin-right: 30px;
 }
+
+
+.header {
+    background-color: lightblue;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+body{
+    margin: 0;
+}
