@@ -24,26 +24,3 @@ function asientos (avion){
     }
     document.write(`</table>`);
 }
-
-
-
-
-
-
-/*function Cliente (){
-    var clase = prompt("¿En qué tipo de clase quieres viajar?");
-    var asiento = prompt("Elige el asiento");
-    var asientoRandom = Math.random();
-
-    while (clase != "Business" || clase != "Turista" || clase != "LowCost"){
-        alert("Esa clase no existe. Por favor, elija su clase")
-
-        if (clase == "Busines"){
-            asiento
-        } else if (clase == "Turista"){
-            asientoRandom
-        }else{
-            asientoRandom
-        }
-    }
-}*/
