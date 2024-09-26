@@ -12,12 +12,17 @@ const vueling = new Avion ("Vueling", 15, 4, 140);
 
 
 function asientos (avion){
-    for (let i = 0; i < avion.rows; i++) {
-        console.log ("Filas" + (i + 1))
-        for (let x = 0; x < avion.column; x++) {
-            console.log ("Columnas" + (x + 1))
+    document.write(`<table>`);
+    for (let fila = 0; fila < avion.rows; fila ++) {
+        document.write(`<tr>`);
+        console.log ("Filas" + (fila + 1))
+        for (let columna = 0; columna < avion.column; columna++) {
+            document.write(`<td> ${fila + 1} : ${columna + 1} </td>`);
+            console.log ("Columnas" + (columna + 1))
         }
+        document.write(`</tr>`);
     }
+    document.write(`</table>`);
 }
 
 
