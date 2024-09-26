@@ -17,7 +17,13 @@ function asientos (avion){
         document.write(`<tr>`);
         console.log ("Filas" + (fila + 1))
         for (let columna = 0; columna < avion.column; columna++) {
-            document.write(`<td> ${fila + 1} : ${columna + 1} </td>`);
+            document.write(`
+                <td>
+                    <div class= "seat">
+                        ${fila + 1} - ${columna + 1}
+                    </div> 
+                </td>
+            `);
             console.log ("Columnas" + (columna + 1))
         }
         document.write(`</tr>`);
