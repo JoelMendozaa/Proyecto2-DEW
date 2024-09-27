@@ -25,6 +25,7 @@ body{
     
 }
 
+
 .seat {
     width: 50px;
     height: 50px;
@@ -40,4 +41,12 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.fila-naranja {
+    background-color: orange;
+}
+
+.fila-azul {
+    background-color: rgb(0, 141, 235);
 }
