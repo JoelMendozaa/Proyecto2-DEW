@@ -45,17 +45,17 @@ function bienvenida(){
     alert ("Por favor, elija la compañía con la cual desea viajar");
 }
 
-function eleccion(avion){
+function eleccion(){
     var clase = prompt("¿En qué clase le gustaría viajar?");
 
-    while (clase != "Alta" || clase != "Turista" || clase != "Economica"){
+    while (clase != "Alta" && clase != "Turista" && clase != "Economica"){
         alert ("Esa clase no existe");
         clase = prompt("¿En qué clase le gustaría viajar?");
     } if (clase == "Business"){
         var maleta = prompt ("¿Tiene alguna maleta que quiera abordar?");
         if (maleta == "Si"){
             peso = parseInt (prompt ("¿De cuántos kg es? [5kg, 10kg o 25kg]"));
-            if (peso != 5 || peso != 10 || peso != 25){
+            if (peso != 5 && peso != 10 && peso != 25){
                 alert("prueba")
             }
         }
