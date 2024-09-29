@@ -57,13 +57,36 @@ function eleccion(){
     
     if (clase == "Alta"){
         var maleta = prompt ("¿Tiene alguna maleta que quiera abordar?");
+        while (maleta != "Si" && maleta != "No"){
+            alert ("Lo lamento, debes responder con un Si o con un No");
+            maleta = prompt ("¿Tiene alguna maleta que quiera abordar?");
+        }
         if (maleta == "Si"){
             var peso = parseInt (prompt ("¿De cuántos kg es? [5kg, 10kg o 25kg]"));
             while(peso != 5 && peso != 10 && peso != 25){
                 alert("Peso incorrecto");
                 peso = parseInt (prompt ("¿De cuántos kg es? [5kg, 10kg o 25kg]"));
             }
-            console.log ("Eleccion de maleta completada")
-        }
+            console.log ("Maleta abordada");
+            eleccionAsientos();
+        } else if (maleta == "No"){
+            console.log ("Sin maleta");
+            eleccionAsientos();
+        } 
+        
     }
+}
+
+function eleccionAsientos(){
+    var asientoFila = parseInt(prompt ("¿En qué fila desea sentarse?"));
+        while (asientoFila != 1 && asientoFila != 2 && asientoFila != 3 && asientoFila != 4){
+            alert ("Lo lamento, al ser de clase Alta solo puede escoger entre la fila 1 y 4");
+            asientoFila = parseInt(prompt ("¿En qué fila desea sentarse?"));
+        }
+
+        var asientoColumna = parseInt(prompt("¿En qué columna desea sentarse?"));
+        while (asientoColumna != 1 && asientoColumna != 2 && asientoColumna != 3 && asientoColumna != 4 && asientoColumna != 5 && asientoColumna !=6){
+            alert ("Lo lamento, al ser de clase Alta solo puede escoger entre la fila 1 y 6");
+            asientoFila = parseInt(prompt ("¿En qué columna desea sentarse?"));
+        }
 }
