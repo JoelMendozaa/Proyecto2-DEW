@@ -13,25 +13,26 @@ const vueling = new Avion ("Vueling", 15, 4, 140);
 
 function asientos (avion){
     document.write(`<table>`);
-    for (let fila = 0; fila < avion.rows; fila ++) {
+    for (let fila = 0; fila < avion.rows; fila ++) {        // Generación asientos
 
         let claseFila = '';
         if (fila <= 3){
-            claseFila = 'fila-naranja';
+            claseFila = 'fila-naranja';     // Color a los asientos de primera Clase
         } else if (fila > 3 && fila <= 9){
-            claseFila = 'fila-azul';
+            claseFila = 'fila-azul';        // Color a los asientos de clase Turista
         }
 
-        document.write(`<tr class="${claseFila}">`);
+        document.write(`<tr class="${claseFila}">`);        // Creación de tabla para cada asiento generado
         console.log ("Filas" + (fila + 1))
         for (let columna = 0; columna < avion.column; columna++) {
+            let asientoId = `asiento-${fila + 1}-${columna + 1}`;         // Crear el ID para cada asiento en función de su fila y columna
             document.write(`
                 <td>
-                    <div class= "seat">
+                    <div id="${asientoId}" class= "seat">  
                         ${fila + 1} - ${columna + 1}
                     </div> 
                 </td>
-            `);
+            `); // ID creado para poder cambiar luego el asiento seleccionado a color verde
             console.log ("Columnas" + (columna + 1))
         }
         document.write(`</tr>`);
@@ -41,17 +42,17 @@ function asientos (avion){
     eleccion();
 }
 
-
+// Bienvenida
 function bienvenida(){
     alert ("Bienvenido/a a nuestra Agencia de aerolíneas");
     alert ("Por favor, elija la compañía con la cual desea viajar");
 }
 
 function eleccion(){
-    var clase = prompt("¿En qué clase le gustaría viajar?");
+    var clase = prompt("¿En qué clase le gustaría viajar? Clase Alta, Turista o Económica");
 
-    while (clase != "Alta" && clase != "Turista" && clase != "Economica"){
-        alert ("Esa clase no existe");
+    while (clase != "Alta" && clase != "Turista" && clase != "Económica"){
+        alert ("Esa clase no existe");          // Bucle While para que siempre que no se escriba una de las opciones salte un error
         clase = prompt("¿En qué clase le gustaría viajar?");
     } 
     
@@ -68,10 +69,8 @@ function eleccion(){
                 peso = parseInt (prompt ("¿De cuántos kg es? [5kg, 10kg o 25kg]"));
             }
             console.log ("Maleta abordada");
-            eleccionAsientos();
         } else if (maleta == "No"){
             console.log ("Sin maleta");
-            eleccionAsientos();
         } 
         
     }
@@ -80,13 +79,25 @@ function eleccion(){
 function eleccionAsientos(){
     var asientoFila = parseInt(prompt ("¿En qué fila desea sentarse?"));
         while (asientoFila != 1 && asientoFila != 2 && asientoFila != 3 && asientoFila != 4){
-            alert ("Lo lamento, al ser de clase Alta solo puede escoger entre la fila 1 y 4");
+            alert ("Lo lamento, al ser de clase Alta solo puede escoger entre la fila 1 y 4");         // Bucle While para que siempre que no se escriba una de las opciones salte un error
             asientoFila = parseInt(prompt ("¿En qué fila desea sentarse?"));
         }
 
-        var asientoColumna = parseInt(prompt("¿En qué columna desea sentarse?"));
-        while (asientoColumna != 1 && asientoColumna != 2 && asientoColumna != 3 && asientoColumna != 4 && asientoColumna != 5 && asientoColumna !=6){
-            alert ("Lo lamento, al ser de clase Alta solo puede escoger entre la fila 1 y 6");
-            asientoFila = parseInt(prompt ("¿En qué columna desea sentarse?"));
-        }
+    var asientoColumna = parseInt(prompt("¿En qué columna desea sentarse?"));
+    while (asientoColumna != 1 && asientoColumna != 2 && asientoColumna != 3 && asientoColumna != 4 && asientoColumna != 5 && asientoColumna !=6){
+        alert ("Lo lamento, al ser de clase Alta solo puede escoger entre la fila 1 y 6");
+        asientoFila = parseInt(prompt ("¿En qué columna desea sentarse?"));
+    }
+
+    var asientoId = `asiento - ${asientoFila} - ${asientoColumna}`;
+    var asientoSeleccionado = document.getElementById(asientoId);       // Variable creada con el id del asiento que se ha seleccionado previamente 
+    if (asientoSeleccionado) {
+        asientoSeleccionado.style.backgroundColor = "green";  // Cambiar el color del asiento a verde
+        alert("Has seleccionado el asiento en la fila ${asientoFila}, columna ${asientoColumna}.");
+        console.log ("Asiento dibujado")
+    } else {
+        alert("No se pudo seleccionar el asiento.");
+        console.log("No se puede dibujar")
+    }
 }
+
