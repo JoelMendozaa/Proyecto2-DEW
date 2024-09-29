@@ -37,6 +37,8 @@ function asientos (avion){
         document.write(`</tr>`);
     }
     document.write(`</table>`);
+
+    eleccion();
 }
 
 
@@ -51,13 +53,17 @@ function eleccion(){
     while (clase != "Alta" && clase != "Turista" && clase != "Economica"){
         alert ("Esa clase no existe");
         clase = prompt("¿En qué clase le gustaría viajar?");
-    } if (clase == "Business"){
+    } 
+    
+    if (clase == "Alta"){
         var maleta = prompt ("¿Tiene alguna maleta que quiera abordar?");
         if (maleta == "Si"){
-            peso = parseInt (prompt ("¿De cuántos kg es? [5kg, 10kg o 25kg]"));
-            if (peso != 5 && peso != 10 && peso != 25){
-                alert("prueba")
+            var peso = parseInt (prompt ("¿De cuántos kg es? [5kg, 10kg o 25kg]"));
+            while(peso != 5 && peso != 10 && peso != 25){
+                alert("Peso incorrecto");
+                peso = parseInt (prompt ("¿De cuántos kg es? [5kg, 10kg o 25kg]"));
             }
+            console.log ("Eleccion de maleta completada")
         }
     }
 }
