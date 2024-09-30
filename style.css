@@ -43,10 +43,25 @@ body{
     align-items: center;
 }
 
+.menu {
+    display: flex;
+    border: 1px solid black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.menu-container {
+    display: flex;
+}
+
+
 .fila-naranja {
     background-color: orange;
 }
 
 .fila-azul {
     background-color: rgb(0, 141, 235);
+}
+
+.red {
+    background-color: red;
 }
