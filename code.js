@@ -138,3 +138,5 @@ function eleccionAsientos(){
         console.log("No se puede dibujar")
     }*/
 }
+
+// Falta si es residente y si quiere ser prioritario
