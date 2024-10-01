@@ -65,3 +65,24 @@ body{
 .red {
     background-color: red;
 }
+
+.tabla {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+    border: 1px solid black;
+    margin-left: 20px;
+}
+
+.botonReserva {
+    display: block;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Color verde */
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.botonReserva:hover {
+    background-color: #45a049;
+}
