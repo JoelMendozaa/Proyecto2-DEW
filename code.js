@@ -14,7 +14,7 @@ const vueling = new Avion ("Vueling", 15, 4, 140);
 
 function asientos(avion){
 
-    boton()
+    boton();
 
     document.write(`<table>`);
     for (let fila = 0; fila < avion.rows; fila ++) {        // Generación asientos
@@ -66,7 +66,7 @@ function eleccion(){
 
     var clase = prompt("¿En qué clase le gustaría viajar? Clase Business, Turista o Económica");
 
-    while (clase != "Business" && clase != "Turista" && clase != "Economica"){
+    while (clase != "Business" && clase != "Turista" && clase != "Economica" && clase != "business" && clase != "turista" && clase != "economica"){
         alert ("Esa clase no existe");          // Bucle While para que siempre que no se escriba una de las opciones salte un error
         clase = prompt("¿En qué clase le gustaría viajar?");
     } 
@@ -77,7 +77,7 @@ function eleccion(){
             
             if (clase == "Business"){
                 var maleta = prompt ("¿Tiene alguna maleta que quiera abordar?");
-                while (maleta != "Si" && maleta != "No"){
+                while (maleta != "Si" && maleta != "No" && maleta != "si" && maleta != "no"){
                     alert ("Lo lamento, debes responder con un Si o con un No");
                     maleta = prompt ("¿Tiene alguna maleta que quiera abordar?");
                 }
@@ -93,7 +93,7 @@ function eleccion(){
                 }            
             } else if (clase == "Turista"){
                 var maleta = prompt ("¿Tiene alguna maleta que quiera abordar?");
-                while (maleta != "Si" && maleta != "No"){
+                while (maleta != "Si" && maleta != "No" && maleta != "si" && maleta != "no"){
                     alert ("Lo lamento, debes responder con un Si o con un No");
                     maleta = prompt ("¿Tiene alguna maleta que quiera abordar?");
                 }
@@ -109,7 +109,7 @@ function eleccion(){
                 }            
             } else if(clase == "Economica"){
                 var maleta = prompt ("¿Tiene alguna maleta que quiera abordar?");
-                while (maleta != "Si" && maleta != "No"){
+                while (maleta != "Si" && maleta != "No" && maleta != "si" && maleta != "no"){
                     alert ("Lo lamento, debes responder con un Si o con un No");
                     maleta = prompt ("¿Tiene alguna maleta que quiera abordar?");
                 }
@@ -130,23 +130,23 @@ function eleccion(){
     eleccionAsientos();
 
      var comida = prompt("¿Desea comer algo?");
-    while (comida != "Si" && comida != "No"){
+    while (comida != "Si" && comida != "No" && comida != "si" && comida != "no"){
         alert("Eso no es una respuesta, por favor, introduzca si o no");
         comida = prompt ("¿Desea comer algo?");
     }
-    if (comida == "Si"){
-        var menu = prompt ("¿Eres celiaco?");
-        while (menu != "Si" && menu != "No"){
-            alert ("La respuesta debe ser si o no");
-            menu = prompt ("¿Eres celiaco?")
+    if (comida == "Si" || comida == "si"){
+        var menu = prompt ("¿Prefiere menú normal o sin alergenos?");
+        while (menu != "Normal" && menu != "Sin" && menu != "normal" && menu != "sin"){
+            alert ("La respuesta debe ser Normal o Sin");
+            menu = prompt ("¿Prefiere menú normal o sin alergenos?")
         }
-        if (menu == "Si"){
-            console.log("Es celiaco");
+        if (menu == "Normal"){
+            console.log("Menu normal");
         } else {
-            console.log ("No es celiaco");
+            console.log ("Menu sin alergenos");
         }
         
-    } else if (comida == "No"){
+    } else if (comida == "No" && comida == "no"){
         alert ("De acuerdo");
     }
 
@@ -164,7 +164,7 @@ function eleccionAsientos(){
     if (eleccion == "Si"){
         var asientoFila = parseInt(prompt ("¿En qué fila desea sentarse?"));
         while (asientoFila != 1 && asientoFila != 2 && asientoFila != 3 && asientoFila != 4){
-            alert ("Lo lamento, al ser de clase Alta solo puede escoger entre la fila 1 y 4");         // Bucle While para que siempre que no se escriba una de las opciones salte un error
+            alert ("Lo lamento, al ser de clase Alta solo puede escoger entre la fila 1 y 4");      // Bucle While para que siempre que no se escriba una de las opciones salte un error
             asientoFila = parseInt(prompt ("¿En qué fila desea sentarse?"));
         }
 
@@ -182,20 +182,51 @@ function eleccionAsientos(){
         console.log(`Se te ha asignado aleatoriamente la fila ${asientoFilaAleatorio} y la columna ${asientoColumnaAleatorio}.`);
     }
 
+    colorearAsiento(asientoFila, asientoColumna);
+}
 
-   
+function colorearAsiento(fila, columna) {
+    // Seleccionamos la tabla de asientos
+    const tabla = document.querySelector('table');
 
-    /*var asientoId = `asiento - ${asientoFila} - ${asientoColumna}`;
-    var asientoSeleccionado = document.getElementById(asientoId);       // Variable creada con el id del asiento que se ha seleccionado previamente 
-    if (asientoSeleccionado) {
-        asientoSeleccionado.style.backgroundColor = "green";  // Cambiar el color del asiento a verde
-        alert("Has seleccionado el asiento en la fila ${asientoFila}, columna ${asientoColumna}.");
-        console.log ("Asiento dibujado")
+    // Comprobamos si la fila y la columna existen dentro de la tabla
+    if (tabla && tabla.rows[fila - 1] && tabla.rows[fila - 1].cells[columna - 1]) {
+        // Seleccionamos la celda específica en la tabla usando fila y columna
+        const asientoSeleccionado = tabla.rows[fila - 1].cells[columna - 1].querySelector('.seat');
+
+        // Si existe, cambiamos el color de fondo a rojo
+        if (asientoSeleccionado) {
+            asientoSeleccionado.style.backgroundColor = 'red';
+            alert(`Has seleccionado el asiento en la fila ${fila}, columna ${columna}.`);
+        } else {
+            console.log(`No se pudo seleccionar el asiento en la fila ${fila}, columna ${columna}.`);
+        }
     } else {
-        alert("No se pudo seleccionar el asiento.");
-        console.log("No se puede dibujar")
-    }*/
+        alert("El asiento que intentas seleccionar no existe.");
+    }
 }
 
 
-// Falta si es residente y si quiere ser prioritario
+function residente(){   // añadir
+    var residente = prompt ("¿Eres residente?");
+    if (residente == "Si" || residente == "si"){
+        alert("Aplicando el 75%");
+    } else if (residente == "No" || residente == "no") {
+        alert("No se le aplicará el descuento")
+    } else {
+        alert("Esa respuesta no es válida");
+    }
+}
+
+function prioritario(){     // añadir
+    var prioritario = prompt ("¿Desea ser prioritario? [+10€]");
+    if (prioritario == "Si" || prioritario == "si"){
+        alert("Excelente");
+    } else if (prioritario == "No" || prioritario == "no"){
+        alert ("Excelente");
+    } else {
+        ("Eso no es una respuesta valida");
+    }
+}
+
+

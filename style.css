@@ -77,12 +77,12 @@ body{
     display: block;
     margin-bottom: 20px;
     padding: 10px 20px;
-    background-color: #4CAF50; /* Color verde */
+    background-color: #0eb3ff;
     color: white;
     border: none;
     cursor: pointer;
 }
 
 .botonReserva:hover {
-    background-color: #45a049;
+    background-color: #0eb3ff;
 }
