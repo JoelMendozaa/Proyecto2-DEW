@@ -48,6 +48,7 @@ boton();
 
 
 function eleccion(){
+    var avion = Avion; // De todos los aviones creados, nos permite elegir dependiendo del enlace que hayamos escogido en el index.html
     var precioTotal = avion.priceBase; // Precio base del avión
     var cantidadTicket = parseInt (prompt("¿Cuántos billetes desea comprar?"));
 
