@@ -12,9 +12,11 @@ const iberiaExpress = new Avion ("Iberia", 25, 6, 100);
 const vueling = new Avion ("Vueling", 15, 4, 140);
 
 
+boton();
+
+
 function asientos(avion){
 
-    boton();
 
     document.write(`<table>`);
     for (let fila = 0; fila < avion.rows; fila ++) {        // Generación asientos
@@ -72,9 +74,7 @@ function eleccion(){
     } 
 
     if (cantidadTicket > 0){
-        for (var i = 0; i < cantidadTicket; i++){
-
-            
+        for (var i = 0; i < cantidadTicket; i++){   
             if (clase == "Business"){
                 var maleta = prompt ("¿Tiene alguna maleta que quiera abordar?");
                 while (maleta != "Si" && maleta != "No" && maleta != "si" && maleta != "no"){
@@ -138,7 +138,7 @@ function eleccion(){
         var menu = prompt ("¿Prefiere menú normal o sin alergenos?");
         while (menu != "Normal" && menu != "Sin" && menu != "normal" && menu != "sin"){
             alert ("La respuesta debe ser Normal o Sin");
-            menu = prompt ("¿Prefiere menú normal o sin alergenos?")
+            menu = prompt ("¿Prefiere menú normal o sin alergenos?");
         }
         if (menu == "Normal"){
             console.log("Menu normal");
@@ -150,6 +150,17 @@ function eleccion(){
         alert ("De acuerdo");
     }
 
+    var esResidente = prompt ("¿Eres residente?");
+    while (esResidente != "Si" && esResidente != "No" && esResidente != "si" && esResidente != "no"){
+        alert("Debe responder con un Si o con un No");
+        esResidente = prompt ("¿Eres residente?");
+    }
+    if (esResidente == "Si" && esResidente == "si"){
+        residente();
+        console.log("Es residente");
+    } else {
+        console.log("No es residente");
+    }
 }
 
 function eleccionAsientos(){
@@ -194,9 +205,9 @@ function colorearAsiento(fila, columna) {
         // Seleccionamos la celda específica en la tabla usando fila y columna
         const asientoSeleccionado = tabla.rows[fila - 1].cells[columna - 1].querySelector('.seat');
 
-        // Si existe, cambiamos el color de fondo a rojo
+        // Si existe, cambiamos el color de fondo a verde
         if (asientoSeleccionado) {
-            asientoSeleccionado.style.backgroundColor = 'red';
+            asientoSeleccionado.style.backgroundColor = 'green';
             alert(`Has seleccionado el asiento en la fila ${fila}, columna ${columna}.`);
         } else {
             console.log(`No se pudo seleccionar el asiento en la fila ${fila}, columna ${columna}.`);
@@ -207,12 +218,12 @@ function colorearAsiento(fila, columna) {
 }
 
 
-function residente(){   // añadir
+function residente(){
     var residente = prompt ("¿Eres residente?");
     if (residente == "Si" || residente == "si"){
         alert("Aplicando el 75%");
     } else if (residente == "No" || residente == "no") {
-        alert("No se le aplicará el descuento")
+        alert("No se le aplicará el descuento");
     } else {
         alert("Esa respuesta no es válida");
     }
