@@ -22,7 +22,9 @@ function asientos(avion){
             claseFila = 'fila-naranja';     // Color a los asientos de primera Clase
             
         } else if (fila > 3 && fila <= 9){
-            claseFila = 'fila-azul';        // Color a los asientos de clase Turista
+            claseFila = 'fila-greens';        // Color a los asientos de clase Turista
+        } else {
+            claseFila = 'fila-greens';
         }
 
         document.write(`<tr class="${claseFila}">`);        // Creación de tabla para cada asiento generado
