@@ -43,16 +43,6 @@ body{
     align-items: center;
 }
 
-.menu {
-    display: flex;
-    border: 1px solid black;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.menu-container {
-    display: flex;
-}
-
 
 .fila-naranja {
     background-color: orange;
@@ -71,6 +61,13 @@ body{
     text-align: left;
     border: 1px solid black;
     margin-left: 20px;
+}
+
+.boton-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
 }
 
 .botonReserva {
