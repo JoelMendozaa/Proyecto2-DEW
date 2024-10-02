@@ -6,17 +6,14 @@ function Avion (name, rows, column, price){     // Objeto avión
     this.color = [];
 }
 
-// Se crea los objetos con sus respectivos nombres de las aerolineas y constructor.
+// Se crean los objetos con sus respectivos nombres de las aerolíneas y constructor.
 const binter = new Avion("Binter", 20, 6, 120);
 const iberiaExpress = new Avion ("Iberia", 25, 6, 100);
 const vueling = new Avion ("Vueling", 15, 4, 140);
 
-
 boton();
 
-
 function asientos(avion){
-
 
     document.write(`<table>`);
     for (let fila = 0; fila < avion.rows; fila ++) {        // Generación asientos
@@ -48,19 +45,14 @@ function asientos(avion){
 
 }
 
-// Bienvenida
-function bienvenida(){
-    alert ("Bienvenido/a a nuestra Agencia de aerolíneas");
-    alert ("Por favor, elija la compañía con la cual desea viajar");
-}
-
 function boton(){
     document.write(`<button type="button" onclick = "eleccion()" class="botonReserva">Reserva</button>`);
 }
 
 function eleccion(){
-
+    var precioTotal = avion.priceBase; // Precio base del avión
     var cantidadTicket = parseInt (prompt("¿Cuántos billetes desea comprar?"));
+
     while (cantidadTicket <= 0){
         alert ("Adiós");
         return;
@@ -69,97 +61,87 @@ function eleccion(){
     var clase = prompt("¿En qué clase le gustaría viajar? Clase Business, Turista o Económica");
 
     while (clase != "Business" && clase != "Turista" && clase != "Economica" && clase != "business" && clase != "turista" && clase != "economica"){
-        alert ("Esa clase no existe");          // Bucle While para que siempre que no se escriba una de las opciones salte un error
+        alert ("Esa clase no existe"); 
         clase = prompt("¿En qué clase le gustaría viajar?");
-    } 
+    }
 
-    if (cantidadTicket > 0){
-        for (var i = 0; i < cantidadTicket; i++){   
-            if (clase == "Business"){
-                var maleta = prompt ("¿Tiene alguna maleta que quiera abordar?");
-                while (maleta != "Si" && maleta != "No" && maleta != "si" && maleta != "no"){
-                    alert ("Lo lamento, debes responder con un Si o con un No");
-                    maleta = prompt ("¿Tiene alguna maleta que quiera abordar?");
+    if (clase != "Business" && clase != "business") {
+        // Solo si la clase no es Business sumamos precios adicionales
+        for (var i = 0; i < cantidadTicket; i++) {
+
+            var maleta = prompt("¿Tiene alguna maleta que quiera abordar?");
+            while (maleta != "Si" && maleta != "No" && maleta != "si" && maleta != "no") {
+                alert("Lo lamento, debes responder con un Si o con un No");
+                maleta = prompt("¿Tiene alguna maleta que quiera abordar?");
+            }
+
+            if (maleta == "Si" || maleta == "si") {
+                var peso = parseInt(prompt("¿De cuántos kg es? [10kg = 30€ o 25kg = 45€]"));
+                while (peso != 10 && peso != 25) {
+                    alert("Peso incorrecto");
+                    peso = parseInt(prompt("¿De cuántos kg es? [10kg = 30€ o 25kg = 45€]"));
                 }
-                if (maleta == "Si"){
-                    var peso = parseInt (prompt ("¿De cuántos kg es? [10kg o 25kg]"));
-                    while(peso != 5 && peso != 10 && peso != 25){
-                        alert("Peso incorrecto");
-                        peso = parseInt (prompt ("¿De cuántos kg es? [10kg o 25kg]"));
-                    }
-                    console.log ("Maleta abordada");
-                } else if (maleta == "No"){
-                    console.log ("Sin maleta");
-                }            
-            } else if (clase == "Turista"){
-                var maleta = prompt ("¿Tiene alguna maleta que quiera abordar?");
-                while (maleta != "Si" && maleta != "No" && maleta != "si" && maleta != "no"){
-                    alert ("Lo lamento, debes responder con un Si o con un No");
-                    maleta = prompt ("¿Tiene alguna maleta que quiera abordar?");
+
+                if (peso == 10) {
+                    precioTotal += 30;
+                } else if (peso == 25) {
+                    precioTotal += 45;
                 }
-                if (maleta == "Si"){
-                    var peso = parseInt (prompt ("¿De cuántos kg es? [10kg = 30€ o 25kg = 45€]"));
-                    while(peso != 5 && peso != 10 && peso != 25){
-                        alert("Peso incorrecto");
-                        peso = parseInt (prompt ("¿De cuántos kg es? [10kg o 25kg]"));
-                    }
-                    console.log ("Maleta abordada");
-                } else if (maleta == "No"){
-                    console.log ("Sin maleta");
-                }            
-            } else if(clase == "Economica"){
-                var maleta = prompt ("¿Tiene alguna maleta que quiera abordar?");
-                while (maleta != "Si" && maleta != "No" && maleta != "si" && maleta != "no"){
-                    alert ("Lo lamento, debes responder con un Si o con un No");
-                    maleta = prompt ("¿Tiene alguna maleta que quiera abordar?");
-                }
-                if (maleta == "Si"){
-                    var peso = parseInt (prompt ("¿De cuántos kg es? [10kg = 30€ o 25kg = 45€]"));
-                    while(peso != 5 && peso != 10 && peso != 25){
-                        alert("Peso incorrecto");
-                        peso = parseInt (prompt ("¿De cuántos kg es? [10kg o 25kg]"));
-                    }
-                    console.log ("Maleta abordada");
-                } else if (maleta == "No"){
-                    console.log ("Sin maleta");
-                }            
+                console.log("Maleta abordada");
+            } else {
+                console.log("Sin maleta");
             }
         }
-    }
 
-    eleccionAsientos();
+        prioritario();  // Pregunta si el usuario quiere prioridad
 
-     var comida = prompt("¿Desea comer algo?");
-    while (comida != "Si" && comida != "No" && comida != "si" && comida != "no"){
-        alert("Eso no es una respuesta, por favor, introduzca si o no");
-        comida = prompt ("¿Desea comer algo?");
-    }
-    if (comida == "Si" || comida == "si"){
-        var menu = prompt ("¿Prefiere menú normal o sin alergenos?");
-        while (menu != "Normal" && menu != "Sin" && menu != "normal" && menu != "sin"){
-            alert ("La respuesta debe ser Normal o Sin");
-            menu = prompt ("¿Prefiere menú normal o sin alergenos?");
+        var comida = prompt("¿Desea comer algo?");
+        while (comida != "Si" && comida != "No" && comida != "si" && comida != "no") {
+            alert("Eso no es una respuesta, por favor, introduzca si o no");
+            comida = prompt("¿Desea comer algo?");
         }
-        if (menu == "Normal"){
-            console.log("Menu normal");
+
+        if (comida == "Si" || comida == "si") {
+            var menu = prompt("¿Prefiere menú normal o sin alergenos?");
+            while (menu != "Normal" && menu != "Sin" && menu != "normal" && menu != "sin") {
+                alert("La respuesta debe ser Normal o Sin");
+                menu = prompt("¿Prefiere menú normal o sin alergenos?");
+            }
+            precioTotal += 20;  // Precio fijo de comida
+            console.log("Comida seleccionada");
         } else {
-            console.log ("Menu sin alergenos");
+            console.log("Sin comida");
         }
-        
-    } else if (comida == "No" && comida == "no"){
-        alert ("De acuerdo");
     }
 
-    var esResidente = prompt ("¿Eres residente?");
-    while (esResidente != "Si" && esResidente != "No" && esResidente != "si" && esResidente != "no"){
+    // Preguntamos si el usuario es residente y aplicamos el descuento
+    var esResidente = prompt("¿Eres residente?");
+    while (esResidente != "Si" && esResidente != "No" && esResidente != "si" && esResidente != "no") {
         alert("Debe responder con un Si o con un No");
-        esResidente = prompt ("¿Eres residente?");
+        esResidente = prompt("¿Eres residente?");
     }
-    if (esResidente == "Si" && esResidente == "si"){
-        residente();
-        console.log("Es residente");
+
+    if (esResidente == "Si" || esResidente == "si") {
+        precioTotal *= 0.25;  // Aplicamos el 75% de descuento
+        alert("Descuento de residente aplicado: 75%");
+        console.log("Es residente, descuento aplicado");
     } else {
-        console.log("No es residente");
+        console.log("No es residente, sin descuento");
+    }
+
+    alert(`El precio total de su compra es: ${precioTotal.toFixed(2)}€`);           // Redondea los decimales (120.35353535 -> 120.35)
+    console.log(`El precio total de su compra es: ${precioTotal.toFixed(2)}€`);
+}
+
+function prioritario(){
+    var prioritario = prompt("¿Desea ser prioritario? [+10€]");
+    if (prioritario == "Si" || prioritario == "si") {
+        alert("Prioridad seleccionada");
+        precioTotal += 10;  // Sumamos el costo de prioridad
+    } else if (prioritario == "No" || prioritario == "no") {
+        alert("No ha seleccionado prioridad");
+    } else {
+        alert("Eso no es una respuesta válida");
     }
 }
 
@@ -193,10 +175,11 @@ function eleccionAsientos(){
         console.log(`Se te ha asignado aleatoriamente la fila ${asientoFilaAleatorio} y la columna ${asientoColumnaAleatorio}.`);
     }
 
-    colorearAsiento(asientoFila, asientoColumna);
+    // colorearAsiento(asientoFila, asientoColumna); // Puedes implementar una función para marcar el asiento visualmente
 }
 
-function colorearAsiento(fila, columna) {
+
+/*function colorearAsiento(fila, columna) {
     // Seleccionamos la tabla de asientos
     const tabla = document.querySelector('table');
 
@@ -215,29 +198,4 @@ function colorearAsiento(fila, columna) {
     } else {
         alert("El asiento que intentas seleccionar no existe.");
     }
-}
-
-
-function residente(){
-    var residente = prompt ("¿Eres residente?");
-    if (residente == "Si" || residente == "si"){
-        alert("Aplicando el 75%");
-    } else if (residente == "No" || residente == "no") {
-        alert("No se le aplicará el descuento");
-    } else {
-        alert("Esa respuesta no es válida");
-    }
-}
-
-function prioritario(){     // añadir
-    var prioritario = prompt ("¿Desea ser prioritario? [+10€]");
-    if (prioritario == "Si" || prioritario == "si"){
-        alert("Excelente");
-    } else if (prioritario == "No" || prioritario == "no"){
-        alert ("Excelente");
-    } else {
-        ("Eso no es una respuesta valida");
-    }
-}
-
-
+}*/
