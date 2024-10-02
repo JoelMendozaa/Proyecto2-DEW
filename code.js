@@ -11,7 +11,6 @@ const binter = new Avion("Binter", 20, 6, 120);
 const iberiaExpress = new Avion ("Iberia", 25, 6, 100);
 const vueling = new Avion ("Vueling", 15, 4, 140);
 
-boton();
 
 function asientos(avion){
 
@@ -45,9 +44,8 @@ function asientos(avion){
 
 }
 
-function boton(){
-    document.write(`<button type="button" onclick = "eleccion()" class="botonReserva">Reserva</button>`);
-}
+boton();
+
 
 function eleccion(){
     var precioTotal = avion.priceBase; // Precio base del avión
@@ -133,6 +131,15 @@ function eleccion(){
     console.log(`El precio total de su compra es: ${precioTotal.toFixed(2)}€`);
 }
 
+function bienvenida(){
+    alert ("Bienvenido/a a nuestra Agencia de aerolíneas");
+    alert ("Por favor, elija la compañía con la cual desea viajar");
+}
+
+function boton(){
+    document.write(`<button type="button" onclick = "eleccion()" class="botonReserva">Reserva</button>`);
+}
+
 function prioritario(){
     var prioritario = prompt("¿Desea ser prioritario? [+10€]");
     if (prioritario == "Si" || prioritario == "si") {
@@ -175,11 +182,11 @@ function eleccionAsientos(){
         console.log(`Se te ha asignado aleatoriamente la fila ${asientoFilaAleatorio} y la columna ${asientoColumnaAleatorio}.`);
     }
 
-    // colorearAsiento(asientoFila, asientoColumna); // Puedes implementar una función para marcar el asiento visualmente
+     colorearAsiento(asientoFila, asientoColumna); 
 }
 
 
-/*function colorearAsiento(fila, columna) {
+function colorearAsiento(fila, columna) {
     // Seleccionamos la tabla de asientos
     const tabla = document.querySelector('table');
 
@@ -198,4 +205,4 @@ function eleccionAsientos(){
     } else {
         alert("El asiento que intentas seleccionar no existe.");
     }
-}*/
+}
